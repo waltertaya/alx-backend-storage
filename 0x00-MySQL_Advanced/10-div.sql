@@ -1,12 +1,14 @@
 -- Safe division function
 DROP FUNCTION IF EXISTS SafeDiv;
-DELIMITER //
-CREATE FUNCTION SafeDiv(dividend INT, divisor INT) RETURNS FLOAT
+DELIMITER $$
+CREATE FUNCTION SafeDiv (a INT, b INT)
+RETURNS FLOAT DETERMINISTIC
 BEGIN
-    IF divisor = 0 THEN
-        RETURN NULL;
-    ELSE
-        RETURN dividend / divisor;
+    DECLARE result FLOAT DEFAULT 0;
+
+    IF b != 0 THEN
+        SET result = a / b;
     END IF;
-END //
+    RETURN result;
+END $$
 DELIMITER ;
