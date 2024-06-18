@@ -1,2 +1,2 @@
 // Deletes all documents with name="Holberton school" in the school
-db.school.find({ name: "Holberton school" }).delete();
+db.school.delete({ name: "Holberton school" });
