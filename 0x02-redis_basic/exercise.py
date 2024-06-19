@@ -12,7 +12,7 @@ class Cache:
     
     def __init__(self):
         self._redis = redis.Redis()
-        self._redis.flushdb()
+        self._redis.flushdb(True)
     
     def store(self, data: Union[str, int, bytes, float]) -> str:
         """Generate a random key and store the input data in Redis"""
